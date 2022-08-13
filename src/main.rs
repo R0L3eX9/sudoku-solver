@@ -18,6 +18,7 @@ fn parse_board(file_path: &str) -> [[u8; WIDTH as usize]; WIDTH as usize] {
             cols = 0;
             rows += 1;
         } 
+
         if row.is_numeric() {
             board[rows as usize][cols as usize] =
                 row.to_digit(10).unwrap() as u8;
@@ -136,7 +137,7 @@ fn display_board(board: [[u8; WIDTH as usize]; WIDTH as usize]) {
 
 fn main() {
     let board: [[u8; WIDTH as usize]; WIDTH as usize] =
-                    parse_board("/home/razvan/dev/rust/sudoku-solver/board.txt");
+                    parse_board("../board.txt");
 
     let start_time = SystemTime::now();
 
@@ -147,6 +148,5 @@ fn main() {
     }
 
     let time_taken = start_time.elapsed().unwrap().as_secs_f64();
-    println!("Puzzle solved in {}", time_taken);
-
+    println!("Puzzle solved in {} seconds", time_taken);
 }
